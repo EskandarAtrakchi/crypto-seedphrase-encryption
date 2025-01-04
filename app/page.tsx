@@ -47,6 +47,13 @@ export default function Home() {
     }
   };
 
+  const clearFields = () => {
+    setSeedPhrase("");
+    setPassword("");
+    setEncryptedText("");
+    setDecryptedText("");
+  };
+
   const showNotification = (message: string, type: string) => {
     setNotification({ show: true, message, type });
     setTimeout(
@@ -90,6 +97,9 @@ export default function Home() {
             </Button>
             <Button onClick={decrypt} className="flex-1">
               Decrypt
+            </Button>
+            <Button onClick={clearFields} className="flex-1">
+              Clear
             </Button>
           </div>
 
