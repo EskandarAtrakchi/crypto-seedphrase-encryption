@@ -42,15 +42,25 @@ export default function Home() {
           "error"
         );
       }
-    } catch {
+    } catch (error) {
+      // `error` is defined but not used
       showNotification("Decryption failed. Please try again.", "error");
     }
   };
 
   const showNotification = (message: string, type: string) => {
-    setNotification({ show: true, message, type });
+    setNotification({
+      show: true,
+      message,
+      type,
+    }); // `error` is defined here but not used.
     setTimeout(
-      () => setNotification({ show: false, message: "", type: "" }),
+      () =>
+        setNotification({
+          show: false,
+          message: "",
+          type: "",
+        }),
       3000
     );
   };
