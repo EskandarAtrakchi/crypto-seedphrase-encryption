@@ -42,7 +42,7 @@ export default function Home() {
           "error"
         );
       }
-    } catch (error) {
+    } catch {
       showNotification("Decryption failed. Please try again.", "error");
     }
   };
