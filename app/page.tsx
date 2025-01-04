@@ -23,7 +23,7 @@ export default function Home() {
       const encrypted = CryptoJS.AES.encrypt(seedPhrase, password).toString();
       setEncryptedText(encrypted);
       showNotification("Seed phrase encrypted successfully!", "success");
-    } catch (error) {
+    } catch {
       showNotification("Encryption failed. Please try again.", "error");
     }
   };
@@ -42,25 +42,15 @@ export default function Home() {
           "error"
         );
       }
-    } catch (error) {
-      // `error` is defined but not used
+    } catch {
       showNotification("Decryption failed. Please try again.", "error");
     }
   };
 
   const showNotification = (message: string, type: string) => {
-    setNotification({
-      show: true,
-      message,
-      type,
-    }); // `error` is defined here but not used.
+    setNotification({ show: true, message, type });
     setTimeout(
-      () =>
-        setNotification({
-          show: false,
-          message: "",
-          type: "",
-        }),
+      () => setNotification({ show: false, message: "", type: "" }),
       3000
     );
   };
@@ -108,7 +98,7 @@ export default function Home() {
             <Input
               id="encryptedText"
               value={encryptedText}
-              onChange={(e) => setEncryptedText(e.target.value)}
+              readOnly
               placeholder="Encrypted text will appear here"
             />
           </div>
